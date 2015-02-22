@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../templates/template.xhtml">
+	<ui:define name="body">
+<br/><br/>
+		<table  style="width: 60%">
+			<tr >
+				<td >
+					<table >
+						<tr>
+							<td height="50px" valign="top" >
+							  <p:commandLink action="GestionClient" >
+									<p:graphicImage value="/images/fch11.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Clients"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionUtilisateur">
+									<p:graphicImage value="/images/fch2.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Utilisateurs"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionFournisseur">
+									<p:graphicImage value="/images/fch3.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Fournisseurs"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionMachine">
+									<p:graphicImage value="/images/fch4.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Machines"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				
+			</tr>
+		</table>
+		<br/><br/>
+		<table  style="width: 60%">	
+			<tr>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionPanne">
+									<p:graphicImage value="/images/fch5.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Pannes"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionTache">
+									<p:graphicImage value="/images/fch6.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Tâches"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionPiece">
+									<p:graphicImage value="/images/fch7.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Pièces"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+				<td height="50px" valign="top">
+					<table>
+						<tr>
+							<td valign="top">
+							  <p:commandLink action="GestionAccessoire">
+									<p:graphicImage value="/images/fch8.png"></p:graphicImage>
+								</p:commandLink>
+							</td>
+						</tr>
+						<tr>
+							<td align="center"><h:outputText value="Accesseoires"
+									style="font-size:20px;color:#0562B9;
+                                         font-weight:bold;font-style:Times New Roman" />
+							</td>
+						</tr>
+				  </table>
+				</td>
+			</tr>
+		</table>
+<br/><br/>
+	</ui:define>
+</ui:composition>
+</html>

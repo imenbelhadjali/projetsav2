@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 janv. 2015 15:05:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sav.persistance.Appel" table="appel"
+		catalog="sav">
+
+		<id name="idappel" type="java.lang.Integer">
+			<column name="idappel" />
+			<generator class="increment" />
+		</id>
+
+		<property name="numapp" type="string">
+			<column name="numapp" length="45" />
+		</property>
+		
+		<property name="emplacement" type="string">
+			<column name="emplacement" length="45" />
+		</property>
+		<property name="mdpbios" type="string">
+			<column name="mdpbios" length="45" />
+		</property>
+		
+		<property name="mdpsys" type="string">
+			<column name="mdpsys" length="45" />
+		</property>
+		
+		<property name="dosier_sauvegarde" type="string">
+			<column name="dosier_sauvegarde" length="45" />
+		</property>
+		
+		<property name="observationApl" type="string">
+			<column name="observationApl" length="45" />
+		</property>
+		
+		<property name="date_entre" type="string">
+			<column name="date_entre" length="45" />
+		</property>
+		
+		<property name="etat" type="string">
+			<column name="etat" length="45" />
+		</property>
+		
+		
+		
+		
+	</class>
+</hibernate-mapping>

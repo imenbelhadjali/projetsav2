@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+ <ui:composition template="../templates/templateApl.xhtml">
+	<ui:define name="body">
+	 
+	  <div align="center">
+			<h1>Liste Clients</h1>
+	  </div>
+	 <div align="center">
+       <h:form id="f1">
+       <br />
+			<div align="center">
+				<h:panelGrid columns="5">
+					<h:outputText value="Recherche: " />
+					<p:inputText value="#{clientBean.valeurRecherche}" />
+					<p:selectOneMenu id="recherche" filterMatchMode="startsWith"
+						value="#{clientBean.attribut}" filter="true" effect="fade">
+						<f:selectItems value="#{clientBean.listesRecherches}" var="jo"
+							itemLabel="#{jo.toString()}" itemValue="#{jo}" />
+
+					</p:selectOneMenu>
+					<p:commandButton icon="ui-icon-search" title="Recherche Patient"
+						update=":f1" />
+					<p:commandButton icon="ui-icon-refresh" title="Actualiser" actionListener="#{clientBean.annulerRecherche}"
+						update=":f1" />
+				</h:panelGrid>
+			</div>
+       
+          <div align="right">
+			<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
+			       style="font-size:small;font-weight:bold"
+					update=":f1:f2:dlg" oncomplete="PF('dialogmodif').show()"
+					actionListener="#{clientBean.ajouterClient()}"/>
+		 </div>
+		 
+		 <p:dataTable var="client" id="tableClt" value="#{clientBean.clients}"
+				 border="1" paginator="true"
+				paginatorPosition="top"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rows="5" rowsPerPageTemplate="5,10,15">
+				
+		    <p:column headerText="Nom" style="font-size:small;font-weight:bold">
+					<h:outputText value="#{client.nomclt}"
+						style="font-size:small;font-weight:bold" />
+			</p:column>
+			
+			<p:column headerText="Prenom" style="font-size:small;font-weight:bold">
+					<h:outputText value="#{client.prenomclt}"
+						style="font-size:small;font-weight:bold" />
+			</p:column>
+			
+	        <p:column headerText="Adresse" style="font-size:small;font-weight:bold">
+				<h:outputLabel  value="#{client.adrclt}"
+					     style="font-size:small;font-weight:bold"/>
+           </p:column>
+	       <p:column headerText="Email"  style="font-size:small;font-weight:bold">
+			   <h:outputLabel  value="#{client.mailclt}"
+					      style="font-size:small;font-weight:bold" />
+          </p:column>
+	      <p:column headerText="Gsm1" style="font-size:small;font-weight:bold">
+			  <h:outputLabel  value="#{client.gsm1clt}" 
+			        style="font-size:small;font-weight:bold" />
+         </p:column>
+          <p:column headerText="Gsm2" style="font-size:small;font-weight:bold">
+			 <h:outputLabel  value="#{client.gsm2clt}"
+			        style="font-size:small;font-weight:bold" />
+          </p:column>
+          <p:column headerText="Tel Fixe" style="font-size:small;font-weight:bold" >
+			  <h:outputLabel  value="#{client.telclt}" 
+			              style="font-size:small;font-weight:bold" />
+        </p:column>
+          <p:column headerText="Fax" style="font-size:small;font-weight:bold">
+		       <h:outputLabel  value=" #{client.faxclt}" style="font-size:small;font-weight:bold" />
+         </p:column>
+	     <p:column style="width:15%">
+		      <p:commandButton actionListener="#{clientBean.modifierClient(client)}"
+				 update=":f1:f2:dlg" oncomplete="PF('dialogmodif').show()"
+				 icon="ui-icon-pencil" title="Modification" />	
+		      <p:commandButton actionListener="#{clientBean.Supprimer(client.idclient)}"
+				icon="ui-icon-trash" title="Suppression Client" update=":f1:tableClt">
+					<p:confirm header="Suppression Client"
+						message="Voulez-vous vraiment supprimer cette Client ?"
+						icon="ui-icon-alert" />
+		    </p:commandButton>
+	     </p:column>
+       </p:dataTable>
+
+		<p:confirmDialog global="true"  hideEffect="fade" >
+			<p:commandButton value="Oui" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="Non" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+		
+		<h:form id="f2">
+				<p:dialog  id="dlg" widgetVar="dialogmodif" modal="true" closable="false" resizable="true"  
+				       header="#{clientBean.action} Client" >
+				    <p:panel id="dialog" >
+						    <h:panelGrid columns="2" cellspacing="20">
+						    <p:outputLabel value="Nom"/>
+							<p:inputText value="#{clientBean.nomclt}" id="pro1"/>
+							<p:outputLabel value="Prenom"/>
+							<p:inputText value="#{clientBean.prenomclt}" id="pro8"/>
+							<p:outputLabel value="Adresse"/>
+							<p:inputText value="#{clientBean.adrclt}" id="pro2"/>
+							<p:outputLabel value="Email"/>
+							<p:inputText value="#{clientBean.mailclt}" id="pro3"/>
+							<p:outputLabel value="Gsm1"/>
+							<p:inputText value="#{clientBean.gsm1clt}" id="pro4"/>
+							<p:outputLabel value="Gsm2"/>
+							<p:inputText value="#{clientBean.gsm2clt}" id="pro5"/>
+							<p:outputLabel value="Tel Fixe"/>
+							<p:inputText value="#{clientBean.telclt}" id="pro6"/>
+							<p:outputLabel value="Fax"/>
+							<p:inputText value="#{clientBean.faxclt}" id="pro7"/>
+							
+							</h:panelGrid>
+							
+							<h:panelGrid columns="2">
+							<p:commandButton value="Valider" icon="ui-icon-check" 
+								actionListener="#{clientBean.validation()}" update=":f1" />
+							<p:commandButton value="Annuler" actionListener="#{clientBean.initialisation()}"
+								icon="ui-icon-arrowreturnthick-1-n"
+								 update=":f1" />
+						</h:panelGrid>
+					
+				</p:panel>
+		</p:dialog>
+		</h:form>
+	  </h:form>
+	</div>
+ </ui:define>
+</ui:composition>
+</html>

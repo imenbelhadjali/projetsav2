@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 janv. 2015 15:05:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sav.persistance.Reglement" table="reglement"
+		catalog="sav">
+
+		<id name="idreglement" type="java.lang.Integer">
+			<column name="idreglement" />
+			<generator class="increment" />
+		</id>
+
+		<property name="prixReg" type="string">
+			<column name="prixReg" length="45" />
+		</property>
+		
+		
+		<property name="totaltache" type="string">
+			<column name="totaltache" length="45" />
+		</property>
+		
+		
+		<property name="totalpiece" type="string">
+			<column name="totalpiece" length="45" />
+		</property>
+		
+		<property name="totalrep" type="string">
+			<column name="totalrep" length="45" />
+		</property>
+		
+		<property name="datesortie" type="string">
+			<column name="datesortie" length="45" />
+		</property>
+		
+		<property name="observationReg" type="string">
+			<column name="observationReg" length="45" />
+		</property>
+		
+		
+		
+		
+		
+		
+		
+	</class>
+</hibernate-mapping>

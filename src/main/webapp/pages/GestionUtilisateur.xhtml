@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../templates/template.xhtml">
+	<ui:define name="body">
+		<div align="center">
+			<h1>Liste Utilisateurs</h1>
+		</div>
+
+		<div align="center">
+			<h:form id="f1">
+				<div >
+
+					<div align="right">
+						<p:commandButton value="Nouveau" icon="ui-icon-plusthick" style="font-size:small;font-weight:bold"
+							update=":f1:f2:dlg" oncomplete="PF('dialogmodif').show()"
+							actionListener="#{utilisateurBean.ajouterUtilisateur()}" />
+					</div>
+					<p:dataTable var="utilisateur" id="tableUtl"
+						value="#{utilisateurBean.utilisateurs}"
+						emptyMessage="Pas d'utilisateurs">
+
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Nom" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                         #{utilisateur.nomUtl}
+                       </p:column>
+                       
+                       <p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Prenom"  style="font-size:small;font-weight:bold"/>
+							</f:facet>
+                         #{utilisateur.prenomUtl}
+                       </p:column>
+
+                      <p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="cinUtl" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                        #{utilisateur.cinUtl}
+                       </p:column>
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Adresse" style="font-size:small;font-weight:bold"/>
+							</f:facet>
+                         #{utilisateur.adrUtl}
+                       </p:column>
+
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Email" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                          #{utilisateur.mailUtl}
+                       </p:column>
+
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Gsm1" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                         #{utilisateur.gsm1Utl}
+                      </p:column>
+
+
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Gsm2" />
+							</f:facet>
+                        #{utilisateur.gsm2Utl}
+                       </p:column>
+
+
+						<p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Tel" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                         #{utilisateur.telUtl}
+                        </p:column>
+                        
+                        <p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Grade" style="font-size:small;font-weight:bold"/>
+							</f:facet>
+                         #{utilisateur.grade}
+                        </p:column>
+                        
+                        <p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Login" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                         #{utilisateur.login}
+                        </p:column>
+                        
+                        <p:column style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Mot Pass" style="font-size:small;font-weight:bold" />
+							</f:facet>
+                         #{utilisateur.motPass}
+                        </p:column>
+                        
+
+						<p:column style="width:15%">
+							<p:commandButton
+								actionListener="#{utilisateurBean.modifierUtilisateur(utilisateur)}"
+								update=":f1:f2:dlg"
+								oncomplete="PF('dialogmodif').show()" icon="ui-icon-pencil"
+								title="Modification" />
+
+							<p:commandButton
+								actionListener="#{utilisateurBean.Supprimer(utilisateur.idutilisateur)}"
+								icon="ui-icon-trash" title="Suppression Utilisateur" update=":f1:tableUtl">
+								<p:confirm header="Suppression Utilisateur"
+									message="Voulez-vous vraiment supprimer cette Utilisateur ?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</div>
+
+				<p:confirmDialog global="true" showEffect="fade"
+					hideEffect="explode">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+				<h:form id="f2">
+					<p:dialog   id="dlg"  idwidgetVar="dialogmodif" modal="true" closable="false"
+						resizable="true" header="#{utilisateurBean.action}  Utilisateur">
+
+						<p:panel id="dialogmodif" >
+							<h:panelGrid columns="2"  cellspacing="10">
+								<p:outputLabel value="Nom" />
+								<p:inputText value="#{utilisateurBean.nomUtl}" id="pro1" />
+								<p:outputLabel value="Prenom" />
+								<p:inputText value="#{utilisateurBean.prenomUtl}" id="pro2" />
+								<p:outputLabel value="Cin" />
+								<p:inputText value="#{utilisateurBean.cinUtl}" id="pro8" />
+								<p:outputLabel value="Adresse" />
+								<p:inputText value="#{utilisateurBean.adrUtl}" id="pro3" />
+								<p:outputLabel value="Emai" />
+								<p:inputText value="#{utilisateurBean.mailUtl}" id="pro4" />
+								<p:outputLabel value="Gsm1" />
+								<p:inputText value="#{utilisateurBean.gsm1Utl}" id="pro5" />
+								<p:outputLabel value="Gsm2" />
+								<p:inputText value="#{utilisateurBean.gsm2Utl}" id="pro6" />
+								<p:outputLabel value="Tel" />
+								<p:inputText value="#{utilisateurBean.telUtl}" id="pro7" />
+								<p:outputLabel value="Grade" />
+								<p:inputText value="#{utilisateurBean.grade}" id="pro11" />
+								<p:outputLabel value="Login" />
+								<p:inputText value="#{utilisateurBean.login}" id="pro9" />
+								<p:outputLabel value="Mot De Passe" />
+								<p:inputText value="#{utilisateurBean.motPass}" id="pro10" />
+								
+
+
+							</h:panelGrid>
+
+							<h:panelGrid columns="3">
+								<p:commandButton value="Valider" icon="ui-icon-check"
+									actionListener="#{utilisateurBean.validation()}" update=":f1" />
+								<p:commandButton value="Annuler"
+									icon="ui-icon-arrowreturnthick-1-n" update=":f1" />
+
+
+
+							</h:panelGrid>
+
+						</p:panel>
+
+
+					</p:dialog>
+				</h:form>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

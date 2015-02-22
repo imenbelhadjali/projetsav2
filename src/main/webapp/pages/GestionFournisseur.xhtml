@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../templates/template.xhtml">
+	<ui:define name="body">
+
+		<div align="center">
+			<h1>Liste Fournisseurs</h1>
+		</div>
+
+		<div align="center">
+			<h:form id="f1">
+
+
+				<div style="width: 100%">
+					<div align="right">
+						<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
+						 style="font-size:small;font-weight:bold"
+							update="f1:f2:dlg" oncomplete="PF('dialogmodif').show()"
+							actionListener="#{fournisseurBean.ajouterFournisseur()}" />
+					</div>
+					<p:dataTable var="fournisseur" id="f1"
+						value="#{fournisseurBean.fournisseurs}"
+						emptyMessage="Pas de fournisseurs">
+						
+						<p:column  style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Nom" />
+							</f:facet>
+                           #{fournisseur.nomfour}
+						</p:column>
+
+						<p:column  style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Adresse" />
+							</f:facet>
+                       #{fournisseur.adrfour}
+					 </p:column>
+
+						<p:column   style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Email" />
+							</f:facet>
+                           #{fournisseur.mailfour}
+                        </p:column>
+
+						<p:column  style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Gsm1" />
+							</f:facet>
+                           #{fournisseur.gsm1four}
+                        </p:column>
+
+
+						<p:column  style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Gsm2" />
+							</f:facet>
+                         #{fournisseur.gsm2four}
+                         </p:column>
+
+						<p:column  style="font-size:small;font-weight:bold" >
+							<f:facet name="header">
+								<h:outputLabel value="Tel" />
+							</f:facet>
+                        #{fournisseur.telfour}
+                      </p:column>
+
+						<p:column  style="font-size:small;font-weight:bold">
+							<f:facet name="header">
+								<h:outputLabel value="Fax" />
+							</f:facet>
+                        #{fournisseur.faxfour}
+                        </p:column>
+
+
+						<p:column style="width:15%">
+							<p:commandButton
+								actionListener="#{fournisseurBean.modifierFournisseur(fournisseur)}"
+								update=":f1:f2:dlg"
+								oncomplete="PF('dialogmodif').show()" icon="ui-icon-pencil"
+								title="Modification" />
+
+
+							<p:commandButton
+								actionListener="#{fournisseurBean.Supprimer(fournisseur.idfournisseur)}"
+								icon="ui-icon-trash" title="Suppression Fournisseur" update="f1">
+								<p:confirm header="Suppression Fournisseur"
+									message="Voulez-vous vraiment supprimer cette Fournisseur ?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</div>
+
+				<p:confirmDialog global="true" showEffect="fade"
+					hideEffect="explode">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+				<h:form id="f2">
+					<p:dialog id="dlg" widgetVar="dialogmodif" modal="true" closable="false"
+						resizable="true" header="#{fournisseurBean.action} Fournisseur">
+
+						<p:panel id="dialogmodif" >
+							<h:panelGrid columns="2" cellspacing="10">
+								<p:outputLabel value="Nom" />
+								<p:inputText value="#{fournisseurBean.nomfour}" id="pro1" />
+								<p:outputLabel value="Adresse" />
+								<p:inputText value="#{fournisseurBean.adrfour}" id="pro2" />
+								<p:outputLabel value="Email" />
+								<p:inputText value="#{fournisseurBean.mailfour}" id="pro3" />
+								<p:outputLabel value="Gsm1" />
+								<p:inputText value="#{fournisseurBean.gsm1four}" id="pro4" />
+								<p:outputLabel value="Gsm2" />
+								<p:inputText value="#{fournisseurBean.gsm2four}" id="pro5" />
+								<p:outputLabel value="Tel" />
+								<p:inputText value="#{fournisseurBean.telfour}" id="pro6" />
+								<p:outputLabel value="Fax" />
+								<p:inputText value="#{fournisseurBean.faxfour}" id="pro7" />
+
+							</h:panelGrid>
+
+							<h:panelGrid columns="3">
+								<p:commandButton value="Valider" icon="ui-icon-check"
+									actionListener="#{fournisseurBean.validation()}" update=":f1" />
+								<p:commandButton value="Annuler"
+									icon="ui-icon-arrowreturnthick-1-n" update=":f1" />
+
+
+
+							</h:panelGrid>
+
+						</p:panel>
+
+
+					</p:dialog>
+				</h:form>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

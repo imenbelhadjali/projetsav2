@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 janv. 2015 15:05:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sav.persistance.Aplfour" table="aplfour"
+		catalog="sav">
+
+		<id name="idaplfour" type="java.lang.Integer">
+			<column name="idaplfour" />
+			<generator class="increment" />
+		</id>
+
+		<property name="datesorti" type="string">
+			<column name="datesorti" length="45" />
+		</property>
+		
+			<property name="dateretour" type="string">
+			<column name="dateretour" length="45" />
+		</property>
+		
+			<property name="observation" type="string">
+			<column name="observation" length="45" />
+		</property>
+		
+			<property name="montant" type="string">
+			<column name="montant" length="45" />
+		</property>
+		
+		
+		
+	</class>
+</hibernate-mapping>

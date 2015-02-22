@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 janv. 2015 15:05:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sav.persistance.Machine" table="machine"
+		catalog="sav">
+
+		<id name="idmachine" type="java.lang.Integer">
+			<column name="idmachine" />
+			<generator class="increment" />
+		</id>
+
+		<property name="designationMach" type="string">
+			<column name="designationMach" length="45" />
+		</property>
+		
+		<property name="num_serie" type="string">
+			<column name="num_serie" length="45" />
+		</property>
+		<property name="model" type="string">
+			<column name="model" length="45" />
+		</property>
+		
+		
+		
+		
+	</class>
+</hibernate-mapping>

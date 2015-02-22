@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 janv. 2015 15:05:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.sav.persistance.Utilisateur" table="utilisateur"
+		catalog="sav">
+
+		<id name="idutilisateur" type="java.lang.Integer">
+			<column name="idutilisateur" />
+			<generator class="increment" />
+		</id>
+
+		<property name="nomUtl" type="string">
+			<column name="nomUtl" length="45" />
+		</property>
+		<property name="prenomUtl" type="string">
+			<column name="prenomUtl" length="45" />
+		</property>
+		<property name="mailUtl" type="string">
+			<column name="mailUtl" length="45" />
+		</property>
+		<property name="adrUtl" type="string">
+			<column name="adrUtl" length="45" />
+		</property>
+
+		<property name="gsm1Utl" type="string">
+			<column name="gsm1Utl" length="45" />
+		</property>
+		
+		
+		<property name="gsm2Utl" type="string">
+			<column name="gsm2Utl" length="45" />
+		</property>
+		
+		<property name="telUtl" type="string">
+			<column name="telUtl" length="45" />
+		</property>
+		
+		<property name="cinUtl" type="string">
+			<column name="cinUtl" length="45" />
+		</property>
+		<property name="login" type="string">
+			<column name="login" length="45" />
+		</property>
+		<property name="motPass" type="string">
+			<column name="motPass" length="45" />
+		</property>
+		
+		<property name="grade" type="string">
+			<column name="grade" length="45" />
+		</property>
+		
+		
+		
+	</class>
+</hibernate-mapping>
